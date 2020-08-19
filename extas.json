@@ -1,0 +1,32 @@
+{
+  "name": "extas/registry",
+  "repositories": [
+    {
+      "name": "extas_packages",
+      "scope": "extas",
+      "pk": "name",
+      "class": "extas\\components\\registry\\RegistryPackage",
+      "aliases": ["extasPackages"]
+    }
+  ],
+  "plugins_install": [
+    {
+      "repository": "extasPackages",
+      "name": "extas package",
+      "section": "extas_packages"
+    }
+  ],
+  "extas_packages": [
+    {
+      "name": "extas-registry",
+      "title": "Registry",
+      "description": "Registry for extas packages",
+      "parameters": {
+        "deprecated": {
+          "name": "deprecated",
+          "value": false
+        }
+      }
+    }
+  ]
+}
