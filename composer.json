@@ -3,7 +3,8 @@
   "description": "Registry for extas packages",
   "require": {
     "jeyroik/extas-api": "0.*",
-    "jeyroik/extas-repositories": "0.*"
+    "jeyroik/extas-repositories": "0.*",
+    "jeyroik/extas-installer-plugins": "0.*"
   },
   "require-dev": {
     "phpunit/phpunit": "^9",
