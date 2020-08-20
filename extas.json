@@ -14,6 +14,11 @@
       "class": "extas\\components\\plugins\\api\\PluginRegistry",
       "stage": "extas.api.app.init",
       "install_on": "install"
+    },
+    {
+      "class": "extas\\components\\plugins\\registry\\PluginImage",
+      "stage": "extas.registry.response.image",
+      "install_on": "install"
     }
   ],
   "plugins_install": [
