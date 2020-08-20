@@ -32,13 +32,11 @@ class PluginImage extends Plugin implements IStageRegistryResponse
         $request = $this->getPsrRequest();
         $query = parse_url($request->getUri()->getQuery());
         $type = $query['path'] ?? 'png';
-
+        $url = 'https://img.shields.io/badge/'.$paramName.'-'.$state.'-' . $color . '.' . $type;
         $response = $this->getPsrResponse();
         $response->withHeader('Content-type', 'image/' . $type)
             ->getBody()
-            ->write(file_get_contents(
-                'https://img.shields.io/badge/'.$paramName.'-'.$state.'-' . $color . '.' . $type
-            ));
+            ->write(file_get_contents($url));
 
         return $response;
     }
