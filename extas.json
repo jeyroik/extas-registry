@@ -29,6 +29,11 @@
       "class": "extas\\components\\plugins\\registry\\PluginJson",
       "stage": "extas.registry.response.json",
       "install_on": "install"
+    },
+    {
+      "class": "extas\\components\\plugins\\registry\\parameters\\PluginProvides",
+      "stage": "extas.registry.response.parameter",
+      "install_on": "install"
     }
   ],
   "plugins_install": [
@@ -52,9 +57,19 @@
       "title": "Registry",
       "description": "Registry for extas packages",
       "parameters": {
+        "author": {
+          "name": "author",
+          "value": "jeyroik"
+        },
         "deprecated": {
           "name": "deprecated",
           "value": false
+        },
+        "provides": {
+          "name": "provides",
+          "value": [
+            "extas_packages", "extensions", "plugins", "repositories"
+          ]
         }
       }
     }

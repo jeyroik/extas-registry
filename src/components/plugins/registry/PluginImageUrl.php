@@ -4,6 +4,7 @@ namespace extas\components\plugins\registry;
 use extas\components\http\THasHttpIO;
 use extas\components\plugins\Plugin;
 use extas\interfaces\registry\IRegistryPackage;
+use extas\interfaces\samples\parameters\ISampleParameter;
 use extas\interfaces\stages\IStageRegistryResponse;
 use Psr\Http\Message\ResponseInterface;
 
@@ -16,16 +17,28 @@ use Psr\Http\Message\ResponseInterface;
 class PluginImageUrl extends Plugin implements IStageRegistryResponse
 {
     use THasHttpIO;
+    use THasColor;
+    use THasState;
+    use THasShieldUrl;
 
-    public function __invoke(IRegistryPackage $package, array $args = []): ResponseInterface
+    /**
+     * @param IRegistryPackage $package
+     * @param array $args
+     * @param ISampleParameter $parameter
+     * @return ResponseInterface
+     */
+    public function __invoke(IRegistryPackage $package, array $args, ISampleParameter $parameter): ResponseInterface
     {
-        $paramName = $args['parameter_name'] ?? '';
-        $value = $package->getParameterValue($paramName, false);
-        $state = $value ? 'yes' : 'no';
-        $color = $value ? 'red' : 'green';
+        $value = $parameter->getValue(false);
+        $state = $this->getState($value);
+        $color = $this->getColor($value);
 
         $response = $this->getPsrResponse();
-        $response->getBody()->write('https://img.shields.io/badge/'.$paramName.'-'.$state.'-' . $color);
+        $response
+            ->getBody()
+            ->write($this->getUrl(
+                $this->getPsrRequest(), $parameter->getName().'-'.$state.'-' . $color
+            ));
 
         return $response;
     }
