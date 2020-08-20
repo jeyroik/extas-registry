@@ -32,7 +32,7 @@
     },
     {
       "class": "extas\\components\\plugins\\registry\\parameters\\PluginProvides",
-      "stage": "extas.registry.response.parameter",
+      "stage": "extas.registry.response.parameter.provides",
       "install_on": "install"
     }
   ],
