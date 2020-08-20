@@ -12,7 +12,8 @@
   "plugins": [
     {
       "class": "extas\\components\\plugins\\api\\PluginRegistry",
-      "stage": "extas.api.app.init"
+      "stage": "extas.api.app.init",
+      "install_on": "install"
     }
   ],
   "plugins_install": [
