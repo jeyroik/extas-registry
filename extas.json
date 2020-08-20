@@ -9,6 +9,12 @@
       "aliases": ["extasPackages"]
     }
   ],
+  "plugins": [
+    {
+      "class": "extas\\components\\plugins\\api\\PluginRegistry",
+      "stage": "extas.api.app.init"
+    }
+  ],
   "plugins_install": [
     {
       "repository": "extasPackages",
