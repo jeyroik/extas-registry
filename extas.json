@@ -19,6 +19,16 @@
       "class": "extas\\components\\plugins\\registry\\PluginImage",
       "stage": "extas.registry.response.image",
       "install_on": "install"
+    },
+    {
+      "class": "extas\\components\\plugins\\registry\\PluginImageUrl",
+      "stage": "extas.registry.response.image-url",
+      "install_on": "install"
+    },
+    {
+      "class": "extas\\components\\plugins\\registry\\PluginJson",
+      "stage": "extas.registry.response.json",
+      "install_on": "install"
     }
   ],
   "plugins_install": [

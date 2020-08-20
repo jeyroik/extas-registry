@@ -8,20 +8,15 @@ use extas\interfaces\stages\IStageRegistryResponse;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Class PluginImage
+ * Class PluginImageUrl
  *
  * @package extas\components\plugins\registry
  * @author jeyroik <jeyroik@gmail.com>
  */
-class PluginImage extends Plugin implements IStageRegistryResponse
+class PluginImageUrl extends Plugin implements IStageRegistryResponse
 {
     use THasHttpIO;
 
-    /**
-     * @param IRegistryPackage $package
-     * @param array $args
-     * @return ResponseInterface
-     */
     public function __invoke(IRegistryPackage $package, array $args = []): ResponseInterface
     {
         $paramName = $args['parameter_name'] ?? '';
@@ -30,11 +25,7 @@ class PluginImage extends Plugin implements IStageRegistryResponse
         $color = $value ? 'red' : 'green';
 
         $response = $this->getPsrResponse();
-        $response->withHeader('Content-type', 'image/svg+xml;charset=utf-8')
-            ->getBody()
-            ->write(file_get_contents(
-                'https://img.shields.io/badge/'.$paramName.'-'.$state.'-' . $color
-            ));
+        $response->getBody()->write('https://img.shields.io/badge/'.$paramName.'-'.$state.'-' . $color);
 
         return $response;
     }

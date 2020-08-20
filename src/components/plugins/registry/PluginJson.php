@@ -8,33 +8,25 @@ use extas\interfaces\stages\IStageRegistryResponse;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Class PluginImage
+ * Class PluginJson
  *
  * @package extas\components\plugins\registry
  * @author jeyroik <jeyroik@gmail.com>
  */
-class PluginImage extends Plugin implements IStageRegistryResponse
+class PluginJson extends Plugin implements IStageRegistryResponse
 {
     use THasHttpIO;
 
-    /**
-     * @param IRegistryPackage $package
-     * @param array $args
-     * @return ResponseInterface
-     */
     public function __invoke(IRegistryPackage $package, array $args = []): ResponseInterface
     {
         $paramName = $args['parameter_name'] ?? '';
         $value = $package->getParameterValue($paramName, false);
-        $state = $value ? 'yes' : 'no';
-        $color = $value ? 'red' : 'green';
 
         $response = $this->getPsrResponse();
-        $response->withHeader('Content-type', 'image/svg+xml;charset=utf-8')
-            ->getBody()
-            ->write(file_get_contents(
-                'https://img.shields.io/badge/'.$paramName.'-'.$state.'-' . $color
-            ));
+        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode([
+            'version' => '1.0',
+            $paramName => $value
+        ]));
 
         return $response;
     }
