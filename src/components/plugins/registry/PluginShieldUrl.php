@@ -9,12 +9,12 @@ use extas\interfaces\stages\IStageRegistryResponse;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Class PluginImage
+ * Class PluginImageUrl
  *
  * @package extas\components\plugins\registry
  * @author jeyroik <jeyroik@gmail.com>
  */
-class PluginImage extends Plugin implements IStageRegistryResponse
+class PluginShieldUrl extends Plugin implements IStageRegistryResponse
 {
     use THasHttpIO;
     use THasColor;
@@ -32,14 +32,13 @@ class PluginImage extends Plugin implements IStageRegistryResponse
         $value = $parameter->getValue(false);
         $state = $this->getState($value);
         $color = $this->getColor($value);
+
         $response = $this->getPsrResponse();
         $response
             ->getBody()
-            ->write(
-                file_get_contents($this->getUrl(
-                    $this->getPsrRequest(), $parameter->getName().'-'.$state.'-' . $color
-                ))
-            );
+            ->write($this->getUrl(
+                $this->getPsrRequest(), $parameter->getName().'-'.$state.'-' . $color
+            ));
 
         return $response;
     }

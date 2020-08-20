@@ -16,13 +16,13 @@
       "install_on": "install"
     },
     {
-      "class": "extas\\components\\plugins\\registry\\PluginImage",
-      "stage": "extas.registry.response.image",
+      "class": "extas\\components\\plugins\\registry\\PluginShield",
+      "stage": "extas.registry.response.shield",
       "install_on": "install"
     },
     {
-      "class": "extas\\components\\plugins\\registry\\PluginImageUrl",
-      "stage": "extas.registry.response.image-url",
+      "class": "extas\\components\\plugins\\registry\\PluginShieldUrl",
+      "stage": "extas.registry.response.shield-url",
       "install_on": "install"
     },
     {
