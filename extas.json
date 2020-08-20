@@ -16,6 +16,14 @@
       "section": "extas_packages"
     }
   ],
+  "extensions": [
+    {
+      "class": "extas\\components\\extensions\\ExtensionRepositoryDescription",
+      "interface": "extas\\interfaces\\extensions\\IExtensionRepositoryDescription",
+      "subject": "*",
+      "methods": ["extasPackages"]
+    }
+  ],
   "extas_packages": [
     {
       "name": "extas-registry",

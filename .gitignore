@@ -19,6 +19,8 @@ Thumbs.db
 composer.phar
 composer.lock
 
+.env
+
 # Mac DS_Store Files
 .DS_Store
 
